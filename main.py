@@ -8,7 +8,6 @@ app.config['DEBUG'] = True
 
 form = """
 <!DOCTYPE html>
-
 <html>
     <head>
         <style>
@@ -29,12 +28,10 @@ form = """
     </head>
     <body>
         <form method = 'POST'>
-            <div>Rotate By:
+            <label for="Rotate By">Rotate By:</label>
                 <input name="rot" value='0' type="text"/>
-            </div>
-            <div>
+            <label for="textarea">textarea</label>
                 <textarea input type="text" name="text">{0}</textarea>
-            </div>
             <input type="submit" />
         </form>
     </body>
@@ -49,9 +46,9 @@ def index():
 
 @app.route("/", methods = ['POST'])
 def encrypt():
-    rot = request.form["rot"]
+    rot = request.form['rot']
     rot = int(rot)
-    text = request.form["text"]
+    text = request.form['text']
     encryption = rotate_string(text,rot)
     return form.format(encryption)
 
